@@ -1,5 +1,7 @@
 // ignore_for_file: unused_local_variable
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,14 +25,14 @@ class Auth {
     return await auth.signInWithCredential(credential);
   }
 
-  Future<bool> checkUserLoggedIn() async {
-    User? user = auth.currentUser;
-    if (user == null) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  // Future<bool> checkUserLoggedIn() async {
+  //   User? user = auth.currentUser;
+  //   if (user == null) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
   Future<void> loginEmailPassword(String email, String password) async {
     try {
@@ -48,5 +50,9 @@ class Auth {
       // TODO
       throw FirebaseAuthException(code: e.code);
     }
+  }
+
+  Future<void> logOut() async {
+    await auth.signOut();
   }
 }

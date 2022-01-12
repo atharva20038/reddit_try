@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:reddit_try/backend/auth.dart';
 import 'package:reddit_try/screens/SignUp.dart';
+import 'package:reddit_try/screens/postScreen.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -78,6 +79,10 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           onPressed: () async {
                             await Auth().signInWithGoogle();
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PostPage()));
                           },
                         ),
                       ),

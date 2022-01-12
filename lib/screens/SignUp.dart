@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:reddit_try/backend/auth.dart';
 import 'package:reddit_try/screens/SignIn.dart';
+import 'package:reddit_try/screens/postScreen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -78,31 +79,52 @@ class _SignUpState extends State<SignUp> {
                           ),
                           onPressed: () async {
                             await Auth().signInWithGoogle();
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PostPage()));
                           },
                         ),
                       ),
 
                       //the or border and or line
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.35,
-                            decoration: BoxDecoration(
-                                border: Border(bottom: BorderSide(width: 0.1))),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: Text("OR"),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: Divider(
+                                thickness: 0.1,
+                                height: 10,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.35,
-                            decoration: BoxDecoration(
-                                border: Border(bottom: BorderSide(width: 0.1))),
-                          ),
-                        ],
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width * 0.35,
+                            //   decoration: BoxDecoration(
+                            //       border: Border(bottom: BorderSide(width: 0.1))),
+                            // ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Text("OR"),
+                              ),
+                            ),
+                            Flexible(
+                              child: Divider(
+                                thickness: 0.1,
+                                height: 10,
+                                color: Colors.black,
+                              ),
+                            ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width * 0.35,
+                            //   decoration: BoxDecoration(
+                            //       border: Border(bottom: BorderSide(width: 0.1))),
+                            // ),
+                          ],
+                        ),
                       ),
 
                       //User Form

@@ -2,11 +2,14 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:reddit_try/screens/SignIn.dart';
 import 'package:reddit_try/screens/loading.dart';
+import 'package:reddit_try/screens/postScreen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
@@ -27,7 +30,7 @@ class _MyAppState extends State<MyApp> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return MaterialApp(
-              home: AuthScreen(),
+              home: PostPage(),
             );
           } else if (snapshot.hasError) {
             return Text("Error");
